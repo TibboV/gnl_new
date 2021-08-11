@@ -6,7 +6,7 @@
 /*   By: tvera <tvera@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:47:48 by tvera             #+#    #+#             */
-/*   Updated: 2021/08/11 10:39:46 by tvera            ###   ########.fr       */
+/*   Updated: 2021/08/11 15:43:44 by tvera            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+int	ft_strchr(const char *s, char c);
 
 #endif

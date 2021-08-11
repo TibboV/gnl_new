@@ -6,7 +6,7 @@
 /*   By: tvera <tvera@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:47:01 by tvera             #+#    #+#             */
-/*   Updated: 2021/08/11 11:10:57 by tvera            ###   ########.fr       */
+/*   Updated: 2021/08/11 15:43:22 by tvera            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_find_n(char *save)
 			return (i);
 		i++;
 	}
-	return (-1);
+	return (0);
 }
 
 static char	*split_lines(t_gnl *gnl, char **save, int n)
@@ -80,8 +80,8 @@ char *get_next_line(int fd)
 		read_size = read(fd, buff, BUFFER_SIZE);
 		buff[read_size] = '\0';
 		save = ft_strjoin(save, buff);
-		n = ft_find_n(save);
-		if (n >= 0)
+		n = ft_strchr(save, '\n');
+		if (n > 0)
 			return (split_lines(&gnl, &save, n));
 	}
 	return (ft_return(&gnl, &save));

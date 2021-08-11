@@ -6,12 +6,28 @@
 /*   By: tvera <tvera@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:48:02 by tvera             #+#    #+#             */
-/*   Updated: 2021/08/11 10:26:46 by tvera            ###   ########.fr       */
+/*   Updated: 2021/08/11 15:43:17 by tvera            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+int	ft_strchr(const char *s, char c)
+{
+	int		i;
 
+	if (!s)
+		return (0);
+	i = 1;
+	while (s[i - 1])
+	{
+		if (s[i - 1] == c)
+		{
+			return (i);
+		}
+		i++;
+	}
+	return (0);
+}
 size_t	ft_strlen(const char *s)
 {
 	size_t	len;
