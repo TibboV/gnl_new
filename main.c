@@ -6,7 +6,7 @@
 /*   By: tvera <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 11:22:14 by tvera             #+#    #+#             */
-/*   Updated: 2021/08/11 11:45:43 by tvera            ###   ########.fr       */
+/*   Updated: 2021/08/13 16:34:30 by tvera            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,30 @@
 
 int	main()
 {
-	char	*line;
 	int		fd = 0;
 
-	fd = open("text.txt", O_RDONLY);
-	printf("%i\n", fd);
-/*	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-*/
-	while (get_next_line(fd) > 0)
-		printf("%s\n", get_next_line(fd));
-	return (0);
+//	fd = open("text.txt", O_RDONLY);
+//	fd = open("files/empty", O_RDONLY);
+//	fd = open("files/nl", O_RDONLY);
+	fd = open("files/41_no_nl", O_RDONLY);
+//	fd = open("files/41_with_nl", O_RDONLY);
+//	fd = open("files/42_no_nl", O_RDONLY);
+//	fd = open("files/42_with_nl", O_RDONLY);
+//	fd = open("files/43_no_nl", O_RDONLY);
+//	fd = open("files/43_with_nl", O_RDONLY);
+//	fd = open("files/multiple_nlx5", O_RDONLY);
+//	fd = open("files/multiple_line_no_nl", O_RDONLY);
+//	fd = open("files/multiple_line_with_nl", O_RDONLY);
+//	fd = open("files/alternate_line_nl_no_nl", O_RDONLY);
+//	fd = open("files/alternate_line_nl_with_nl", O_RDONLY);
+//	fd = open("files/big_line_no_nl", O_RDONLY);
+//	fd = open("files/big_line_with_nl", O_RDONLY);
+//	fd = open("files/alternate_line_nl_with_nl", O_RDONLY);
+	
+	printf("fd : %i\n", fd);
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+
 }

@@ -6,7 +6,7 @@
 /*   By: tvera <tvera@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:48:02 by tvera             #+#    #+#             */
-/*   Updated: 2021/08/11 15:43:17 by tvera            ###   ########.fr       */
+/*   Updated: 2021/08/13 15:30:20 by tvera            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,23 @@ char	*ft_strdup(const char *s1)
 	return (dest);
 }
 
+char	*ft_strndup(const char *s1, int n)
+{
+	char	*dest;
+	int		i;
+
+	i = 0;
+	dest = (char *)malloc(sizeof(*dest) * n + 1);
+	if (!dest)
+		return (NULL);
+	while (i < n)
+	{
+		dest[i] = s1[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
