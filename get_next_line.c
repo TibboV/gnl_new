@@ -6,21 +6,38 @@
 /*   By: tvera <tvera@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:47:01 by tvera             #+#    #+#             */
-/*   Updated: 2021/08/13 16:34:08 by tvera            ###   ########.fr       */
+/*   Updated: 2021/08/16 15:15:50 by tvera            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-static int	ft_find_n(char *save)
+char	*ft_strndup(const char *s1, int n)
+{
+	char	*dest;
+	int		i;
+
+	i = 0;
+	dest = (char *)malloc(sizeof(*dest) * n + 1);
+	if (!dest)
+		return (NULL);
+	while (i < n)
+	{
+		dest[i] = s1[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+static int	ft_find_n(char *save, char c)
 {
 	int	i;
 
 	i = 0;
 	while (save[i])
 	{
-		if (save[i] == '\n')
+		if (save[i] == c)
 			return (i);
 		i++;
 	}
@@ -32,16 +49,8 @@ static char	*split_lines(t_gnl *gnl, char **save, int n)
 	char	*str;
 	int		len;
 
-//	(*save)[n] = '\0';
 	gnl->line = ft_strndup(*save, n + 1);
-//	gnl->line[n] = '\n';
 	len = ft_strlen(*save + n + 1);
-	if (len == 0 && n == 0)
-	{
-		free(*save);
-		*save = 0;
-		return (0);
-	}
 	str = ft_strdup(*save + n + 1);
 	free(*save);
 	*save = str;
@@ -52,20 +61,21 @@ static char	*ft_return(t_gnl *gnl, char **save)
 {
 	int	n;
 
-	n = ft_find_n(*save);
-	if (*save && *save[n] == '\n')
+	n = ft_find_n(*save, '\n');
+	gnl->line = *save;
+	if (*save[n] == '\n')
 		return (split_lines(gnl, save, n));
-	else if (*save)
+	if (ft_strlen(*save) > 0)
 	{
-		gnl->line = *save;
 		*save = 0;
-		return (0);
+		return (gnl->line);
 	}
-	gnl->line = ft_strdup("");
+	free(*save);
+	*save = 0;
 	return (0);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	char		buff[BUFFER_SIZE + 1];
 	static char	*save = NULL;
@@ -84,7 +94,7 @@ char *get_next_line(int fd)
 		read_size = read(fd, buff, BUFFER_SIZE);
 		buff[read_size] = '\0';
 		save = ft_strjoin(save, buff);
-		n = ft_find_n(save);
+		n = ft_find_n(save, '\n');
 		if (n > 0)
 			return (split_lines(&gnl, &save, n));
 	}

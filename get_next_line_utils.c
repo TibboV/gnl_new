@@ -6,28 +6,12 @@
 /*   By: tvera <tvera@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:48:02 by tvera             #+#    #+#             */
-/*   Updated: 2021/08/13 15:30:20 by tvera            ###   ########.fr       */
+/*   Updated: 2021/08/16 12:39:58 by tvera            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-int	ft_strchr(const char *s, char c)
-{
-	int		i;
 
-	if (!s)
-		return (0);
-	i = 1;
-	while (s[i - 1])
-	{
-		if (s[i - 1] == c)
-		{
-			return (i);
-		}
-		i++;
-	}
-	return (0);
-}
 size_t	ft_strlen(const char *s)
 {
 	size_t	len;
@@ -58,23 +42,6 @@ char	*ft_strdup(const char *s1)
 	return (dest);
 }
 
-char	*ft_strndup(const char *s1, int n)
-{
-	char	*dest;
-	int		i;
-
-	i = 0;
-	dest = (char *)malloc(sizeof(*dest) * n + 1);
-	if (!dest)
-		return (NULL);
-	while (i < n)
-	{
-		dest[i] = s1[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;

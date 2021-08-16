@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_OLD.h                                :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tvera <tvera@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tvera <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 15:47:48 by tvera             #+#    #+#             */
-/*   Updated: 2021/08/13 15:23:23 by tvera            ###   ########.fr       */
+/*   Created: 2021/08/16 12:35:17 by tvera             #+#    #+#             */
+/*   Updated: 2021/08/16 12:37:41 by tvera            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
-
+# define GET_NEXT_LINE_H
 # include <stdlib.h>
 # include <unistd.h>
-
-# ifndef	BUFFER_SIZE
-#  define BUFFER_SIZE 5000
-# endif
+# include <stdio.h>
 
 typedef struct s_gnl
 {
-	char *line;
+	char	*line;
 }	t_gnl;
 
 char	*get_next_line(int fd);
@@ -31,6 +28,5 @@ char	*ft_strndup(const char *s1, int n);
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
-int	ft_strchr(const char *s, char c);
 
 #endif
