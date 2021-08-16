@@ -6,11 +6,11 @@
 /*   By: tvera <tvera@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 15:47:01 by tvera             #+#    #+#             */
-/*   Updated: 2021/08/16 16:35:16 by tvera            ###   ########.fr       */
+/*   Updated: 2021/08/16 16:32:42 by tvera            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strndup(const char *s1, int n)
 {
@@ -78,7 +78,7 @@ static char	*ft_return(t_gnl *gnl, char **save)
 char	*get_next_line(int fd)
 {
 	char		buff[BUFFER_SIZE + 1];
-	static char	*save = NULL;
+	static char	*save[128];
 	int			read_size;
 	int			n;
 	t_gnl		gnl;
@@ -91,10 +91,10 @@ char	*get_next_line(int fd)
 	{
 		read_size = read(fd, buff, BUFFER_SIZE);
 		buff[read_size] = '\0';
-		save = ft_strjoin(save, buff);
-		n = ft_find_n(save, '\n');
+		save[fd] = ft_strjoin(save[fd], buff);
+		n = ft_find_n(save[fd], '\n');
 		if (n > 0)
-			return (split_lines(&gnl, &save, n));
+			return (split_lines(&gnl, &save[fd], n));
 	}
-	return (ft_return(&gnl, &save));
+	return (ft_return(&gnl, &save[fd]));
 }
